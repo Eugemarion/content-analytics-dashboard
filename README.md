@@ -1,73 +1,159 @@
-# React + TypeScript + Vite
+Content Analytics Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern analytics dashboard built with React, TypeScript, and TailwindCSS, designed to simulate a SaaS-style content performance platform.
 
-Currently, two official plugins are available:
+This project demonstrates clean architecture, derived state management, data visualization patterns, and product-oriented UI implementation using modern React best practices.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Overview
 
-## React Compiler
+The application allows users to:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Filter content by date range and distribution channel
 
-## Expanding the ESLint configuration
+Search posts by title
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Analyze performance metrics through dynamic KPI cards
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Visualize trends and distributions via interactive charts
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Sort tabular data client-side
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Export filtered results to CSV
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Handle empty states gracefully
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+All metrics and visualizations are derived from a structured mock dataset and respond instantly to user input.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Core Features
+Analytics Overview
+
+Dynamic KPI calculation (views, clicks, average CTR, top channel)
+
+Compact number formatting
+
+Derived metrics computed from filtered state
+
+Filtering System
+
+Date range selector (7 / 30 / 60 / 90 days)
+
+Channel-based filtering
+
+Title search
+
+Reset functionality
+
+Fully reactive state synchronization
+
+Data Visualization
+
+Line chart (views over time)
+
+Bar chart (top posts by clicks)
+
+Pie chart (channel distribution)
+
+Responsive chart containers
+
+Interactive Data Table
+
+Client-side sorting (ascending / descending)
+
+Sorting indicators
+
+Row-level CTR computation
+
+Live updates based on filter state
+
+Data Export
+
+CSV export based on filtered dataset
+
+Includes computed CTR values
+
+Browser-generated file download
+
+State Handling
+
+Derived state via custom hook (useAnalyticsFilters)
+
+Memoized data transformations
+
+Conditional rendering for empty states
+
+Architecture
+
+The project follows a feature-based structure:
+
+src/
+  app/
+  features/
+    analytics/
+      components/
+      hooks/
+      types/
+      utils/
+Architectural Principles
+
+Separation of business logic and presentation
+
+Custom hooks for state encapsulation
+
+Dedicated data transformation layer for charts
+
+Fully typed data models
+
+Clear responsibility boundaries across modules
+
+Tech Stack
+
+React
+
+TypeScript
+
+TailwindCSS
+
+Recharts
+
+Vite
+
+Getting Started
+
+Install dependencies:
+
+npm install
+
+Run development server:
+
+npm run dev
+
+Build for production:
+
+npm run build
+Future Improvements
+
+Backend API integration
+
+Pagination
+
+URL-based filter persistence
+
+Dark mode toggle
+
+Authentication and role-based access control
+
+Performance optimizations for large datasets
+
+Purpose
+
+This project was built to demonstrate:
+
+Scalable component architecture
+
+Real-time derived state management
+
+Analytical dashboard design patterns
+
+Practical SaaS interface implementation
+
+It reflects how a production-ready analytics interface can be structured using modern frontend technologies.
